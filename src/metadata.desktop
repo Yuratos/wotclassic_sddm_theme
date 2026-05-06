@@ -1,0 +1,14 @@
+[SddmGreeterTheme]
+Name=sddm-theme-ximper
+Description=sddm-theme-ximper
+Author=fiersik
+Website=https://gitlab.eterfund.ru/ximperlinux/sddm-theme-ximper
+License=GPL-3.0
+Type=sddm-theme
+Version=1.0
+ConfigFile=theme.conf
+MainScript=Main.qml
+TranslationsDirectory=translations
+Theme-Id=sddm-theme-ximper
+Theme-API=2.0
+QtVersion=6
