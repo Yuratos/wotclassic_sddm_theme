@@ -459,7 +459,7 @@ Column {
 
             background: Image {
                 source: loginButton.pressed ? "../Assets/496.png" : 
-                    (loginButton.hovered ? "../Assets/408.png" : "../Assets/398.png")
+                    (loginButton.hovered ? "../Assets/408.png" : loginButton.enabled ? "../Assets/398.png" : "../Assets/483.png")
                 anchors.fill: parent
             }
             states: [
