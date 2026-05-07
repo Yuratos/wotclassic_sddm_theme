@@ -2,6 +2,7 @@ import QtQuick 2.15
 import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15
 
+
 Column {
     id: inputContainer
     
@@ -213,11 +214,13 @@ Column {
             height: root.font.pointSize * 3
             width: parent.width
             horizontalAlignment: TextInput.AlignHCenter
+
             z: 1
 
             text: config.ForceLastUser == "true" ? selectUser.currentText : null
             color: config.LoginFieldTextColor
-            font.bold: false
+            //font.bold: false
+            font.family: customFontLight.name
             font.capitalization: config.AllowUppercaseLettersInUsernames == "false" ? Font.AllLowercase : Font.MixedCase
             placeholderText: config.TranslatePlaceholderUsername || textConstants.userName
             placeholderTextColor: config.PlaceholderTextColor
@@ -258,7 +261,7 @@ Column {
         }
         Text {
             text: "Email:"
-            font.family: "Helvetica"
+            font.family: customFontLight.name
             font.pointSize: 12
             color: "lightgrey"
             anchors.right: username.left
@@ -357,7 +360,7 @@ Column {
             anchors.centerIn: parent
             horizontalAlignment: TextInput.AlignHCenter
             
-            font.bold: true
+            //font.bold: true
             color: config.PasswordFieldTextColor
             focus: config.PasswordFocus == "true" ? true : false
             echoMode: passwordIcon.checked ? TextInput.Normal : TextInput.Password
@@ -381,7 +384,7 @@ Column {
         }
         Text {
             text: "Password:"
-            font.family: "Helvetica"
+            font.family: customFontLight.name
             font.pointSize: 12
             color: "lightgrey"
             anchors.right: password.left
@@ -423,13 +426,19 @@ Column {
 
         visible: config.HideLoginButton == "true" ? false : true
         
+    
+
+
         Button {
             id: loginButton
-
-            height: root.font.pointSize * 3
-            implicitWidth: parent.width
+            
+            //height: root.font.pointSize * 3
+            height: 128
+            //implicitWidth: parent.width
+            width: 256
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
+            
             
             text: config.TranslateLogin || textConstants.login
             enabled: config.AllowEmptyPassword == "true" || username.text != "" && password.text != "" ? true : false
@@ -438,31 +447,29 @@ Column {
             contentItem: Text {
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-
+                font.pointSize: 16
                 font.bold: true
-                font.pointSize: root.font.pointSize
-                font.family: root.font.family
+                font.family: customFont.name
+                //font.pointSize: root.font.pointSize
+                //font.family: root.font.family
                 color: config.LoginButtonTextColor
                 text: parent.text
                 opacity: 0.5
             }
 
-            background: Rectangle {
-                id: buttonBackground
-
-                color: config.LoginButtonBackgroundColor
-                opacity: 0.2
-                radius: config.RoundCorners || 0
+            background: Image {
+                source: loginButton.pressed ? "../Assets/496.png" : 
+                    (loginButton.hovered ? "../Assets/408.png" : "../Assets/398.png")
+                anchors.fill: parent
             }
-
             states: [
                 State {
                     name: "pressed"
                     when: loginButton.down
                     PropertyChanges {
                         target: buttonBackground
-                        color: Qt.darker(config.LoginButtonBackgroundColor, 1.1)
-                        opacity: 1
+                        //color: Qt.darker(config.LoginButtonBackgroundColor, 1.1)
+                        //opacity: 1
                     }
                     PropertyChanges {
                         target: loginButton.contentItem
@@ -472,8 +479,8 @@ Column {
                     name: "hovered"
                     when: loginButton.hovered
                     PropertyChanges {
-                        target: buttonBackground
-                        color: Qt.lighter(config.LoginButtonBackgroundColor, 1.15)
+                        //target: buttonBackground
+                        //color: Qt.lighter(config.LoginButtonBackgroundColor, 1.15)
                         opacity: 1
                     }
                     PropertyChanges {
@@ -486,7 +493,7 @@ Column {
                     when: loginButton.activeFocus
                     PropertyChanges {
                         target: buttonBackground
-                        color: Qt.lighter(config.LoginButtonBackgroundColor, 1.2)
+                        //color: Qt.lighter(config.LoginButtonBackgroundColor, 1.2)
                         opacity: 1
                     }
                     PropertyChanges {
@@ -499,7 +506,7 @@ Column {
                     when: loginButton.enabled
                     PropertyChanges {
                         target: buttonBackground;
-                        color: config.LoginButtonBackgroundColor;
+                        //color: config.LoginButtonBackgroundColor;
                         opacity: 1
                     }
                     PropertyChanges {
@@ -511,8 +518,8 @@ Column {
             transitions: [
                 Transition {
                     PropertyAnimation {
-                        properties: "opacity, color";
-                        duration: 300
+                        //properties: "opacity, color";
+                        //duration: 300
                     }
                 }
             ]

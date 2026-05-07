@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
 import SddmComponents 2.0 as SDDM
+import QtQuick.Controls 2.15
 
 ColumnLayout {
     id: formContainer
@@ -17,14 +18,36 @@ ColumnLayout {
     //    Layout.preferredHeight: root.height / 3
     //    Layout.leftMargin: p != "0" ? a == "left" ? -p : a == "right" ? p : 0 : 0
     //}
-    Image {
-        source: "../Assets/wotc_logo_mt.png"
+
+    Rectangle{
+        width: 330
+        height: 330
+        color: "transparent"
+        anchors.centerIn: formContainer
+            Image {
+        source: "../Assets/59.png"
+                // Ограничиваем размер картинки, чтобы она не вылезала за границы Rectangle
+
+
         //width: 100
         //height: 100
-        Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
-        Layout.leftMargin: p != "0" ? a == "left" ? -p : a == "right" ? p : 0 : 0
-        Layout.preferredHeight: root.height / 3
+        //Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
+        //Layout.leftMargin: p != "0" ? a == "left" ? -p : a == "right" ? p : 0 : 0
+        //Layout.preferredHeight: root.height / 3
+        anchors.centerIn: parent
+        anchors.verticalCenterOffset: 75
+
+        fillMode: Image.PresserveAspectFit
+       
+        
+
+
     }
+    }
+
+
+
+
     Input {
         id: input
 

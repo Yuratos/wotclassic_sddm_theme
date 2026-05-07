@@ -53,6 +53,19 @@ Pane {
         width: parent.width
         anchors.fill: parent
         
+        FontLoader {
+            id: customFontBold
+            source: "fonts/HeliosCondBold.ttf" // Can be a local path or web URL
+        }
+        FontLoader {
+            id: customFontLight
+            source: "fonts/HeliosCondLight.ttf" // Can be a local path or web URL
+        }
+        FontLoader {
+            id: customFont
+            source: "fonts/HeliosCondRegular.ttf" // Can be a local path or web URL
+        }
+
         Rectangle {
             id: tintLayer
 
@@ -60,8 +73,9 @@ Pane {
             width: parent.width
             anchors.fill: parent
             z: 1
-            color: config.DimBackgroundColor
-            opacity: config.DimBackground
+            //color: config.DimBackgroundColor
+            //opacity: config.DimBackground
+            color: "transparent"
         }
 
         Rectangle {
@@ -70,8 +84,8 @@ Pane {
             anchors.fill: form
             anchors.centerIn: form
             z: 1
-
-            color: config.FormBackgroundColor
+            color:"transparent"
+            //color: config.FormBackgroundColor
             visible: config.HaveFormBackground == "true" ? true : false
             opacity: config.PartialBlur == "true" ? 0.3 : 1
         }
